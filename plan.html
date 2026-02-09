@@ -27,7 +27,6 @@
                 <section class="page-content home-content">
                     <p class="project-description animatable-on-tab-load">
                         Умный мониторинг здоровья для вашей птицефермы.
-                        <br>(Smart health monitoring for your poultry farm.)
                     </p>
                     <div class="placeholder-box animatable-on-tab-load">
                         Краткая сводка: все системы в норме.
@@ -41,7 +40,6 @@
                           <polygon fill="#FF9800" points="65,35 70,38 65,41"/>
                           <ellipse fill="#FF5722" cx="62" cy="46" rx="4" ry="6" transform="rotate(15 62 46)"/>
                         </svg>
-                        <p class="slogan">Januya - It's about care.</p>
                     </div>
                 </section>
             </div>
@@ -53,16 +51,24 @@
                  <section class="page-content camera-feeds-container">
                     <div class="camera-feed animatable-on-tab-load">
                         <h3>Тепловизор (Симуляция)</h3>
-                        <div id="thermal-feed" class="feed-placeholder">Тепловизор - Нет Симуляции</div>
+                        <img id="thermal-feed-img" class="feed-placeholder" alt="Загрузка тепловизора..." width="100%">
                     </div>
                     <div class="camera-feed animatable-on-tab-load">
                         <div class="feed-header">
                             <h3>Камера / Видео</h3>
-                            <button id="toggle-feed-btn" class="feed-toggle-button">Показать Видео</button>
+                            <div class="button-group">
+                                <button id="toggle-feed-btn" class="feed-toggle-button">Показать Видео</button>
+                                <button id="show-all-cameras-btn" class="feed-toggle-button">Все камеры</button>
+                            </div>
+                            <button id="switch-to-video-btn" class="feed-toggle-button dev-feature" style="display: none;">К Видео</button>
                         </div>
                         <img id="normal-feed-img" class="feed-placeholder" alt="Загрузка потока..." width="100%">
                     </div>
-                </section>
+                 </section>
+                 <section id="dev-info-panel" class="page-content dev-feature" style="display: none;">
+                    <h4 class="dev-section-title">Debug Information</h4>
+                    <pre id="debug-info-content">Awaiting data...</pre>
+                 </section>
             </div>
 
             <div id="info-pane" class="tab-pane">
@@ -76,6 +82,9 @@
                         <button id="reports-bell" class="icon-button">
                             <span class="icon-content">🔔</span>
                         </button>
+                        <button id="history-btn" class="icon-button" aria-label="Открыть историю">
+                            <span class="icon-content">📜</span>
+                        </button>
                     </div>
                 </header>
                 <section class="page-content">
@@ -83,10 +92,10 @@
                         <h3 class="section-title">Болезни Кур</h3>
                         <ul id="disease-list" class="info-list">
                             <li class="disease-item" data-disease-id="coccidiosis">Кокцидиоз</li>
-                            <li class="disease-item" data-disease-id="mareks">Болезнь Марека</li>
+                            <li class="disease-item" data-disease-id="botulism">Ботулизм</li>
                             <li class="disease-item" data-disease-id="newcastle">Болезнь Ньюкасла</li>
-                            <li class="disease-item" data-disease-id="pullorosis">Пуллороз</li>
-                            <li class="disease-item" data-disease-id="pasteurellosis">Пастереллёз</li>
+                            <li class="disease-item" data-disease-id="chickenpox">Куриная оспа</li>
+                            <li class="disease-item" data-disease-id="lice_and_mites">Вши и клещи</li>
                         </ul>
                     </div>
                 </section>
@@ -102,6 +111,16 @@
                     <p><strong>Симптомы:</strong> <span id="disease-symptoms">...</span></p>
                     <p><strong>Лечение:</strong> <span id="disease-cure">...</span></p>
                     <p><strong>Профилактика:</strong> <span id="disease-prevention">...</span></p>
+                </div>
+            </div>
+
+            <div id="history-list" class="details-overlay">
+                <div class="details-overlay-header">
+                    <h4 style="flex-grow:1;"><span class="icon">📜</span>История (<span id="history-count">0</span>)</h4>
+                    <button class="icon-button close-button close-overlay-btn" aria-label="Закрыть">✖</button>
+                </div>
+                <div class="details-content-wrapper" id="history-content">
+                    <p style="text-align:center; padding: 20px; color: var(--text-placeholder);">Нет записей в истории.</p>
                 </div>
             </div>
 
@@ -122,6 +141,31 @@
                     <button class="icon-button close-button close-overlay-btn" aria-label="Закрыть">✖</button>
                 </div>
                 <div class="details-content-wrapper" id="dev-mode-content">
+                    <div class="dev-section">
+                        <h5 class="dev-section-title">Debug & Demo</h5>
+                        <div class="dev-control">
+                            <label for="demo-mode-toggle">Demo Mode</label>
+                            <label class="switch">
+                                <input type="checkbox" id="demo-mode-toggle">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="dev-section">
+                        <h5 class="dev-section-title">Alert Triggers</h5>
+                        <div class="dev-control">
+                            <label>Lethargy Box Demo</label>
+                            <button id="lethargy-demo-btn" class="dev-button">Activate</button>
+                        </div>
+                        <div id="alert-trigger-controls" class="dev-control-grid">
+                            <button class="dev-button" data-alert-type="behavior" data-message="Курица #12 проявляет признаки летаргии.">Lethargy Warning</button>
+                            <button class="dev-button" data-alert-type="disease" data-message="Обнаружены признаки кокцидиоза у курицы #4.">Coccidiosis Alert</button>
+                            <button class="dev-button" data-alert-type="disease" data-message="Обнаружены признаки ботулизма у курицы #8.">Botulism Alert</button>
+                            <button class="dev-button" data-alert-type="disease" data-message="Обнаружены признаки болезни Ньюкасла у курицы #15.">Newcastle Alert</button>
+                            <button class="dev-button" data-alert-type="disease" data-message="Обнаружены признаки куриной оспы у курицы #23.">Chickenpox Alert</button>
+                            <button class="dev-button" data-alert-type="disease" data-message="Обнаружены вши и клещи у курицы #42.">Lice & Mites Alert</button>
+                        </div>
+                    </div>
                     <div class="dev-section">
                         <h5 class="dev-section-title">Color Customization</h5>
                         <div class="dev-control-group">

@@ -37,10 +37,10 @@
     --etm-shadow-interactive: 0 2px 5px rgba(0, 0, 0, 0.1), 0 0 2px var(--etm-accent-primary) inset;
     --etm-status-healthy-bg: rgba(255, 255, 255, 0.2);
     --etm-status-healthy-text: #ffffff;
-    --etm-status-warning-bg: #FFF6E0;
-    --etm-status-warning-text: #A96800;
-    --etm-status-danger-bg: #FFEAEC;
-    --etm-status-danger-text: #AF1B1B;
+    --etm-status-warning-bg: #fffbeb;
+    --etm-status-warning-text: #946800;
+    --etm-status-danger-bg: #fff1f2;
+    --etm-status-danger-text: #c81e1e;
     --etm-status-info-bg: #E0F3FD;
     --etm-status-info-text: #01538C;
 
@@ -64,7 +64,7 @@
     --mdn-status-warning-bg: rgba(245, 158, 11, 0.22);
     --mdn-status-warning-text: #FFD54F;
     --mdn-status-danger-bg: rgba(239, 68, 68, 0.22);
-    --mdn-status-danger-text: #EF9A9A;
+    --mdn-status-danger-text: #ff8a8a;
     --mdn-status-info-bg: rgba(59, 130, 246, 0.22);
     --mdn-status-info-text: #90CAF9;
 }
@@ -447,6 +447,19 @@ html[data-theme="dark"] .theme-toggle .theme-icon-light { display: inline-flex; 
 }
 .report-item:hover { transform: translateY(-2px); box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
 .report-item .report-meta { font-size: 0.8rem; color: var(--text-placeholder); margin-bottom: calc(var(--spacing-base)*0.5); }
+.report-item .demo-tag {
+    display: inline-block;
+    margin-left: calc(var(--spacing-base) * 1);
+    padding: 2px 6px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--status-info-text);
+    background-color: var(--status-info-bg);
+    border: 1px solid;
+    border-radius: var(--radius-sm);
+    text-transform: uppercase;
+    vertical-align: middle;
+}
 .report-item .report-status {
     font-weight: 600; padding: calc(var(--spacing-base)*0.5) var(--spacing-base); border-radius: var(--radius-sm);
     font-size: 0.7rem; display: inline-block; margin-bottom: calc(var(--spacing-base)*0.75);
@@ -501,6 +514,11 @@ html[data-theme="dark"] .dev-control-group {
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-bottom: calc(var(--spacing-base) * 1.5);
+}
+.dev-control-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: var(--spacing-base);
 }
 .dev-control {
     display: flex;
@@ -566,6 +584,11 @@ html[data-theme="dark"] .dev-control-group {
 .dev-button.reset:hover {
     color: var(--text-primary);
     filter: brightness(1.05);
+}
+.dev-button.active {
+    background-color: var(--accent-secondary);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+    filter: brightness(0.9);
 }
 
 
