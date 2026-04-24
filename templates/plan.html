@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Januya — Мониторинг фермы</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Боковая панель -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <span class="brand-logo">🐔</span>
+        <span class="brand-name">Januya</span>
+      </div>
+      <nav class="sidebar-nav">
+        <button class="nav-item active" data-tab="home-pane">
+          <span class="nav-icon">📊</span>
+          <span class="nav-label">Панель</span>
+        </button>
+        <button class="nav-item" data-tab="camera-pane">
+          <span class="nav-icon">📷</span>
+          <span class="nav-label">Мониторинг</span>
+        </button>
+        <button class="nav-item" data-tab="info-pane">
+          <span class="nav-icon">🩺</span>
+          <span class="nav-label">Заболевания</span>
+        </button>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="nav-item" id="theme-toggle-btn" title="Переключить тему">
+          <span class="nav-icon">🌓</span>
+          <span class="nav-label">Тема</span>
+        </button>
+        <button class="nav-item" id="dev-mode-trigger" title="Панель разработчика">
+          <span class="nav-icon">⚙️</span>
+          <span class="nav-label">Настройки</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Основная область -->
+    <main class="main-area">
+      <!-- Верхняя панель -->
+      <header class="top-bar">
+        <div class="top-bar-left">
+          <h1 class="page-title" id="page-title">Панель управления</h1>
+        </div>
+        <div class="top-bar-right">
+          <button class="icon-btn" id="history-btn" title="История">📜</button>
+          <button class="icon-btn" id="reports-bell" title="Отчёты">🔔</button>
+        </div>
+      </header>
+
+      <!-- Контент -->
+      <div class="content-scroll">
+        <!-- ПАНЕЛЬ УПРАВЛЕНИЯ -->
+        <div id="home-pane" class="tab-pane active">
+          <div class="dash-welcome">
+            <h2>Добро пожаловать в Januya</h2>
+            <p>Мониторинг здоровья птицы в реальном времени с помощью ИИ.</p>
+          </div>
+          <div class="dash-cards">
+            <div class="dash-card">
+              <div class="dash-card-icon">🐔</div>
+              <div class="dash-card-title">Всего птиц</div>
+              <div class="dash-card-value" id="dash-birds">--</div>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-icon">🌡️</div>
+              <div class="dash-card-title">Средняя температура</div>
+              <div class="dash-card-value" id="dash-temp">--°C</div>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-icon">⚠️</div>
+              <div class="dash-card-title">Активные оповещения</div>
+              <div class="dash-card-value" id="dash-alerts">0</div>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-icon">📹</div>
+              <div class="dash-card-title">Камеры</div>
+              <div class="dash-card-value">2 Online</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- МОНИТОРИНГ -->
+        <div id="camera-pane" class="tab-pane">
+          <!-- Панель статистики -->
+          <div class="stats-bar">
+            <div class="stat-pill">
+              <span class="stat-dot green" id="farm-status-dot"></span>
+              <div class="stat-text">
+                <span class="stat-label">Состояние фермы</span>
+                <span class="stat-value" id="farm-status">Здорово</span>
+              </div>
+            </div>
+            <div class="stat-pill">
+              <span class="stat-icon">🌡️</span>
+              <div class="stat-text">
+                <span class="stat-label">Средняя температура</span>
+                <span class="stat-value" id="avg-temp">38.5°C</span>
+              </div>
+            </div>
+            <div class="stat-pill">
+              <span class="stat-icon">🏃</span>
+              <div class="stat-text">
+                <span class="stat-label">Активность стада</span>
+                <span class="stat-value" id="flock-movement">--</span>
+              </div>
+            </div>
+            <div class="stat-pill alert-pill">
+              <span class="stat-icon">🔔</span>
+              <div class="stat-text">
+                <span class="stat-label">Оповещения</span>
+                <span class="stat-value" id="alert-count">0</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Управление трансляцией -->
+          <div class="feed-controls">
+            <button id="toggle-feed-btn" class="btn-primary">Сменить источник</button>
+            <button id="demo-mode-toggle" class="btn-secondary">Демо-режим: ВЫКЛ</button>
+          </div>
+
+          <!-- Сетка видео -->
+          <div class="video-grid">
+            <div class="video-card">
+              <div class="video-header">
+                <h3>Тепловизор</h3>
+                <span class="live-badge">В ЭФИРЕ</span>
+              </div>
+              <div class="video-body">
+                <img id="thermal-feed-img" class="feed-placeholder" alt="Загрузка тепловизора..." />
+              </div>
+            </div>
+            <div class="video-card">
+              <div class="video-header">
+                <h3>RGB камера</h3>
+                <span class="live-badge">В ЭФИРЕ</span>
+              </div>
+              <div class="video-body">
+                <img id="normal-feed-img" class="feed-placeholder" alt="Загрузка камеры..." />
+              </div>
+            </div>
+          </div>
+
+          <!-- Нижняя секция -->
+          <div class="camera-bottom">
+            <div class="panel alerts-panel">
+              <div class="panel-header">
+                <h3 id="alerts-panel-title">⚠️ Оповещения</h3>
+                <div class="panel-toggle-group">
+                  <button class="toggle-btn active" data-view="alerts">Оповещения</button>
+                  <button class="toggle-btn" data-view="chickens">Все курицы</button>
+                </div>
+                <span class="panel-badge" id="camera-alert-badge">0</span>
+              </div>
+              <div class="panel-body" id="camera-alerts-list">
+                <p class="empty-state">Нет активных оповещений</p>
+              </div>
+              <div class="panel-body" id="camera-chickens-list" style="display:none">
+                <p class="empty-state">Нет отслеживаемых куриц</p>
+              </div>
+            </div>
+            <div class="panel chart-panel">
+              <div class="panel-header">
+                <h3>🌡️ Статистика температуры</h3>
+              </div>
+              <div class="panel-body">
+                <canvas id="temp-sparkline" width="280" height="80"></canvas>
+                <div class="chart-labels">
+                  <span>30°C</span>
+                  <span>34°C</span>
+                  <span>38°C</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Панель отладки (скрыта по умолчанию) -->
+          <div id="dev-info-panel" class="dev-panel" style="display:none">
+            <div class="panel-header"><h3>🔧 Информация для отладки</h3></div>
+            <pre id="debug-info-content">Ожидание данных...</pre>
+          </div>
+        </div>
+
+        <!-- ЗАБОЛЕВАНИЯ -->
+        <div id="info-pane" class="tab-pane">
+          <div class="page-header-row">
+            <h2>Заболевания кур</h2>
+            <span class="header-badge">5 известных заболеваний</span>
+          </div>
+          <div class="disease-grid" id="disease-list">
+            <div class="disease-card" data-disease-id="coccidiosis">
+              <div class="disease-card-top">
+                <div class="disease-icon" style="background:#e74c3c">🦠</div>
+                <div class="disease-meta">
+                  <h4>Кокцидиоз</h4>
+                  <span class="disease-tag high">ВЫСОКИЙ</span>
+                </div>
+              </div>
+              <p class="disease-desc">Кровавый понос, вялость, растрепанные перья, потеря аппетита и веса.</p>
+              <div class="disease-card-bottom">
+                <span class="mortality">Смертность: ~30%</span>
+                <button class="btn-small">Подробнее</button>
+              </div>
+            </div>
+
+            <div class="disease-card" data-disease-id="botulism">
+              <div class="disease-card-top">
+                <div class="disease-icon" style="background:#c0392b">☠️</div>
+                <div class="disease-meta">
+                  <h4>Ботулизм</h4>
+                  <span class="disease-tag high">ВЫСОКИЙ</span>
+                </div>
+              </div>
+              <p class="disease-desc">Прогрессирующий паралич от ног, опущенные крылья, затруднённое дыхание.</p>
+              <div class="disease-card-bottom">
+                <span class="mortality">Смертность: ~50-90%</span>
+                <button class="btn-small">Подробнее</button>
+              </div>
+            </div>
+
+            <div class="disease-card" data-disease-id="newcastle">
+              <div class="disease-card-top">
+                <div class="disease-icon" style="background:#e67e22">🤧</div>
+                <div class="disease-meta">
+                  <h4>Болезнь Ньюкасла</h4>
+                  <span class="disease-tag high">ВЫСОКИЙ</span>
+                </div>
+              </div>
+              <p class="disease-desc">Респираторные признаки, диарея, нервные проявления, снижение яйценоскости.</p>
+              <div class="disease-card-bottom">
+                <span class="mortality">Смертность: ~90%</span>
+                <button class="btn-small">Подробнее</button>
+              </div>
+            </div>
+
+            <div class="disease-card" data-disease-id="chickenpox">
+              <div class="disease-card-top">
+                <div class="disease-icon" style="background:#f39c12">🔴</div>
+                <div class="disease-meta">
+                  <h4>Куриная оспа</h4>
+                  <span class="disease-tag medium">СРЕДНИЙ</span>
+                </div>
+              </div>
+              <p class="disease-desc">Сухая/мокрая форма, корки на гребне и сережках, снижение яйценоскости.</p>
+              <div class="disease-card-bottom">
+                <span class="mortality">Смертность: ~5%</span>
+                <button class="btn-small">Подробнее</button>
+              </div>
+            </div>
+
+            <div class="disease-card" data-disease-id="lice_and_mites">
+              <div class="disease-card-top">
+                <div class="disease-icon" style="background:#27ae60">🐜</div>
+                <div class="disease-meta">
+                  <h4>Вши и клещи</h4>
+                  <span class="disease-tag low">НИЗКИЙ</span>
+                </div>
+              </div>
+              <p class="disease-desc">Видимые паразиты, повреждение перьев, чрезмерное чесание, анемия.</p>
+              <div class="disease-card-bottom">
+                <span class="mortality">Смертность: ~1-2%</span>
+                <button class="btn-small">Подробнее</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Оверлеи -->
+  <div class="overlay-backdrop" id="overlay-backdrop"></div>
+
+  <div id="disease-details" class="details-overlay">
+    <div class="overlay-header">
+      <button class="close-overlay-btn">←</button>
+      <h3 id="disease-detail-title">Название заболевания</h3>
+      <button class="close-overlay-btn">✕</button>
+    </div>
+    <div class="overlay-body">
+      <div class="detail-row"><strong>Симптомы:</strong><p id="disease-symptoms">...</p></div>
+      <div class="detail-row"><strong>Лечение:</strong><p id="disease-cure">...</p></div>
+      <div class="detail-row"><strong>Профилактика:</strong><p id="disease-prevention">...</p></div>
+    </div>
+  </div>
+
+  <div id="history-list" class="details-overlay">
+    <div class="overlay-header">
+      <h3>📜 История (<span id="history-count">0</span>)</h3>
+      <button class="close-overlay-btn">✕</button>
+    </div>
+    <div class="overlay-body" id="history-content">
+      <p class="empty-state">Нет записей в истории.</p>
+    </div>
+  </div>
+
+  <div id="reports-list" class="details-overlay">
+    <div class="overlay-header">
+      <h3>📄 Последние отчёты</h3>
+      <button class="close-overlay-btn">✕</button>
+    </div>
+    <div class="overlay-body" id="reports-content">
+      <p class="empty-state">Нет доступных отчётов.</p>
+    </div>
+  </div>
+
+  <!-- Панель разработчика -->
+  <div id="dev-mode-overlay" class="details-overlay dev-overlay">
+    <div class="overlay-header">
+      <h3>🛠️ Панель разработчика</h3>
+      <button class="close-overlay-btn">✕</button>
+    </div>
+    <div class="overlay-body">
+      <div class="dev-section">
+        <h4>Триггеры оповещений</h4>
+        <div class="dev-grid" id="alert-trigger-controls">
+          <button class="dev-btn" data-action="lethargy">Летаргия (текст)</button>
+          <button class="dev-btn" data-action="inject" data-disease="Coccidiosis">Кокцидиоз</button>
+          <button class="dev-btn" data-action="inject" data-disease="Botulism">Ботулизм</button>
+          <button class="dev-btn" data-action="inject" data-disease="Newcastle Disease">Ньюкасл</button>
+          <button class="dev-btn" data-action="inject" data-disease="Chickenpox">Оспа</button>
+          <button class="dev-btn" data-action="inject" data-disease="Lice and Mites">Вши и клещи</button>
+        </div>
+      </div>
+      <div class="dev-section">
+        <h4>Демо летаргии</h4>
+        <button id="lethargy-demo-btn" class="dev-btn">Активировать</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

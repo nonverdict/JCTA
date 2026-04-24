@@ -1,0 +1,179 @@
+[
+    {
+        "type": "behavior_alert",
+        "message": "\u041a\u0443\u0440\u0438\u0446\u0430 #12 \u043f\u0440\u043e\u044f\u0432\u043b\u044f\u0435\u0442 \u043f\u0440\u0438\u0437\u043d\u0430\u043a\u0438 \u043b\u0435\u0442\u0430\u0440\u0433\u0438\u0438.",
+        "is_demo": true
+    },
+    {
+        "type": "disease_alert",
+        "timestamp": 1776966727.3653831,
+        "track_id": 0,
+        "disease": "Lice and Mites",
+        "message": "Chicken #0 shows consistent signs of Lice and Mites.",
+        "is_demo": true
+    },
+    {
+        "type": "behavior_alert",
+        "message": "Test lethargy text",
+        "is_demo": true
+    },
+    {
+        "type": "disease_alert",
+        "timestamp": 1776966644.7807457,
+        "track_id": 0,
+        "disease": "Botulism",
+        "message": "Chicken #0 shows consistent signs of Botulism.",
+        "is_demo": true
+    },
+    {
+        "type": "disease_alert",
+        "timestamp": 1776966598.5670357,
+        "track_id": 0,
+        "disease": "Coccidiosis",
+        "message": "Chicken #0 shows consistent signs of Coccidiosis.",
+        "is_demo": true
+    },
+    {
+        "type": "disease_alert",
+        "message": "\u041e\u0431\u043d\u0430\u0440\u0443\u0436\u0435\u043d\u044b \u043f\u0440\u0438\u0437\u043d\u0430\u043a\u0438 \u0431\u043e\u043b\u0435\u0437\u043d\u0438 \u041d\u044c\u044e\u043a\u0430\u0441\u043b\u0430 \u0443 \u043a\u0443\u0440\u0438\u0446\u044b #15.",
+        "is_demo": true
+    },
+    {
+        "type": "disease_alert",
+        "message": "\u041e\u0431\u043d\u0430\u0440\u0443\u0436\u0435\u043d\u044b \u043f\u0440\u0438\u0437\u043d\u0430\u043a\u0438 \u0431\u043e\u043b\u0435\u0437\u043d\u0438 \u041d\u044c\u044e\u043a\u0430\u0441\u043b\u0430 \u0443 \u043a\u0443\u0440\u0438\u0446\u044b #15.",
+        "is_demo": true
+    },
+    {
+        "type": "disease_alert",
+        "message": "\u041e\u0431\u043d\u0430\u0440\u0443\u0436\u0435\u043d\u044b \u043f\u0440\u0438\u0437\u043d\u0430\u043a\u0438 \u0431\u043e\u0442\u0443\u043b\u0438\u0437\u043c\u0430 \u0443 \u043a\u0443\u0440\u0438\u0446\u044b #8.",
+        "is_demo": true
+    },
+    {
+        "type": "disease_alert",
+        "message": "\u041e\u0431\u043d\u0430\u0440\u0443\u0436\u0435\u043d\u044b \u043f\u0440\u0438\u0437\u043d\u0430\u043a\u0438 \u0431\u043e\u0442\u0443\u043b\u0438\u0437\u043c\u0430 \u0443 \u043a\u0443\u0440\u0438\u0446\u044b #8.",
+        "is_demo": true
+    },
+    {
+        "type": "disease_alert",
+        "message": "\u041e\u0431\u043d\u0430\u0440\u0443\u0436\u0435\u043d\u044b \u043f\u0440\u0438\u0437\u043d\u0430\u043a\u0438 \u0431\u043e\u0442\u0443\u043b\u0438\u0437\u043c\u0430 \u0443 \u043a\u0443\u0440\u0438\u0446\u044b #8.",
+        "is_demo": true
+    },
+    {
+        "type": "disease_alert",
+        "message": "\u041e\u0431\u043d\u0430\u0440\u0443\u0436\u0435\u043d\u044b \u043f\u0440\u0438\u0437\u043d\u0430\u043a\u0438 \u0431\u043e\u0442\u0443\u043b\u0438\u0437\u043c\u0430 \u0443 \u043a\u0443\u0440\u0438\u0446\u044b #8.",
+        "is_demo": true
+    },
+    {
+        "type": "disease_alert",
+        "message": "\u041e\u0431\u043d\u0430\u0440\u0443\u0436\u0435\u043d\u044b \u043f\u0440\u0438\u0437\u043d\u0430\u043a\u0438 \u043a\u043e\u043a\u0446\u0438\u0434\u0438\u043e\u0437\u0430 \u0443 \u043a\u0443\u0440\u0438\u0446\u044b #4.",
+        "is_demo": true
+    },
+    {
+        "type": "disease_alert",
+        "message": "\u041e\u0431\u043d\u0430\u0440\u0443\u0436\u0435\u043d\u044b \u043f\u0440\u0438\u0437\u043d\u0430\u043a\u0438 \u043a\u0443\u0440\u0438\u043d\u043e\u0439 \u043e\u0441\u043f\u044b \u0443 \u043a\u0443\u0440\u0438\u0446\u044b #23.",
+        "is_demo": true
+    },
+    {
+        "type": "behavior_alert",
+        "timestamp": 1776965898.969603,
+        "track_id": 35,
+        "message": "Warning: Chicken #35 is showing signs of lethargy (sustained low activity)."
+    },
+    {
+        "type": "disease_alert",
+        "message": "\u041e\u0431\u043d\u0430\u0440\u0443\u0436\u0435\u043d\u044b \u0432\u0448\u0438 \u0438 \u043a\u043b\u0435\u0449\u0438 \u0443 \u043a\u0443\u0440\u0438\u0446\u044b #42.",
+        "is_demo": true
+    },
+    {
+        "type": "disease_alert",
+        "message": "\u041e\u0431\u043d\u0430\u0440\u0443\u0436\u0435\u043d\u044b \u043f\u0440\u0438\u0437\u043d\u0430\u043a\u0438 \u0431\u043e\u0442\u0443\u043b\u0438\u0437\u043c\u0430 \u0443 \u043a\u0443\u0440\u0438\u0446\u044b #8.",
+        "is_demo": true
+    },
+    {
+        "type": "disease_alert",
+        "message": "\u041e\u0431\u043d\u0430\u0440\u0443\u0436\u0435\u043d\u044b \u043f\u0440\u0438\u0437\u043d\u0430\u043a\u0438 \u043a\u043e\u043a\u0446\u0438\u0434\u0438\u043e\u0437\u0430 \u0443 \u043a\u0443\u0440\u0438\u0446\u044b #4.",
+        "is_demo": true
+    },
+    {
+        "type": "disease_alert",
+        "message": "\u041e\u0431\u043d\u0430\u0440\u0443\u0436\u0435\u043d\u044b \u043f\u0440\u0438\u0437\u043d\u0430\u043a\u0438 \u043a\u043e\u043a\u0446\u0438\u0434\u0438\u043e\u0437\u0430 \u0443 \u043a\u0443\u0440\u0438\u0446\u044b #4.",
+        "is_demo": true
+    },
+    {
+        "type": "disease_alert",
+        "message": "\u041e\u0431\u043d\u0430\u0440\u0443\u0436\u0435\u043d\u044b \u043f\u0440\u0438\u0437\u043d\u0430\u043a\u0438 \u043a\u043e\u043a\u0446\u0438\u0434\u0438\u043e\u0437\u0430 \u0443 \u043a\u0443\u0440\u0438\u0446\u044b #4.",
+        "is_demo": true
+    },
+    {
+        "type": "disease_alert",
+        "message": "\u041e\u0431\u043d\u0430\u0440\u0443\u0436\u0435\u043d\u044b \u043f\u0440\u0438\u0437\u043d\u0430\u043a\u0438 \u043a\u043e\u043a\u0446\u0438\u0434\u0438\u043e\u0437\u0430 \u0443 \u043a\u0443\u0440\u0438\u0446\u044b #4.",
+        "is_demo": true
+    },
+    {
+        "type": "disease_alert",
+        "message": "\u041e\u0431\u043d\u0430\u0440\u0443\u0436\u0435\u043d\u044b \u043f\u0440\u0438\u0437\u043d\u0430\u043a\u0438 \u043a\u043e\u043a\u0446\u0438\u0434\u0438\u043e\u0437\u0430 \u0443 \u043a\u0443\u0440\u0438\u0446\u044b #4.",
+        "is_demo": true
+    },
+    {
+        "type": "behavior_alert",
+        "message": "Test behavior",
+        "is_demo": true
+    },
+    {
+        "type": "disease_alert",
+        "message": "Test disease",
+        "is_demo": true
+    },
+    {
+        "type": "behavior_alert",
+        "message": "Test behavior alert",
+        "is_demo": true
+    },
+    {
+        "type": "disease_alert",
+        "message": "Test disease alert",
+        "is_demo": true
+    },
+    {
+        "type": "behavior_alert",
+        "message": "\u041a\u0443\u0440\u0438\u0446\u0430 #12 \u043f\u0440\u043e\u044f\u0432\u043b\u044f\u0435\u0442 \u043f\u0440\u0438\u0437\u043d\u0430\u043a\u0438 \u043b\u0435\u0442\u0430\u0440\u0433\u0438\u0438.",
+        "timestamp": 1773293267.777,
+        "is_demo": true
+    },
+    {
+        "type": "behavior_alert",
+        "timestamp": 1763536357.5962534,
+        "track_id": 2,
+        "message": "Warning: Chicken #2 is showing signs of lethargy (sustained low activity)."
+    },
+    {
+        "type": "behavior_alert",
+        "timestamp": 1763536280.7952926,
+        "track_id": 2,
+        "message": "Warning: Chicken #2 is showing signs of lethargy (sustained low activity)."
+    },
+    {
+        "type": "disease_alert",
+        "message": "\u041e\u0431\u043d\u0430\u0440\u0443\u0436\u0435\u043d\u044b \u043f\u0440\u0438\u0437\u043d\u0430\u043a\u0438 \u043a\u043e\u043a\u0446\u0438\u0434\u0438\u043e\u0437\u0430 \u0443 \u043a\u0443\u0440\u0438\u0446\u044b #4.",
+        "timestamp": 1763535874.823,
+        "is_demo": true
+    },
+    {
+        "type": "behavior_alert",
+        "message": "\u041a\u0443\u0440\u0438\u0446\u0430 #12 \u043f\u0440\u043e\u044f\u0432\u043b\u044f\u0435\u0442 \u043f\u0440\u0438\u0437\u043d\u0430\u043a\u0438 \u043b\u0435\u0442\u0430\u0440\u0433\u0438\u0438.",
+        "timestamp": 1763535647.709,
+        "is_demo": true
+    },
+    {
+        "type": "behavior_alert",
+        "message": "\u041a\u0443\u0440\u0438\u0446\u0430 #12 \u043f\u0440\u043e\u044f\u0432\u043b\u044f\u0435\u0442 \u043f\u0440\u0438\u0437\u043d\u0430\u043a\u0438 \u043b\u0435\u0442\u0430\u0440\u0433\u0438\u0438.",
+        "timestamp": 1755168319.474,
+        "is_demo": false
+    },
+    {
+        "type": "disease_alert",
+        "message": "\u041e\u0431\u043d\u0430\u0440\u0443\u0436\u0435\u043d\u044b \u043f\u0440\u0438\u0437\u043d\u0430\u043a\u0438 \u0431\u043e\u043b\u0435\u0437\u043d\u0438 \u041d\u044c\u044e\u043a\u0430\u0441\u043b\u0430 \u0443 \u043a\u0443\u0440\u0438\u0446\u044b #15.",
+        "timestamp": 1755168304.194,
+        "is_demo": true
+    }
+]
