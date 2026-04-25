@@ -170,12 +170,17 @@ class AnalyticsService:
     async def thermal_loop(self):
         stream_type = "thermal_video"
         logger.info("Starting thermal broadcast")
+        frame_counter = 0
+        loop = asyncio.get_running_loop()
 
         while stream_type in self.app["active_streams"]:
             start = time.monotonic()
 
             try:
-                frame = self.app["thermal"].read_frame()
+                # Run in executor so slow I2C reads don't block the event loop
+                frame = await loop.run_in_executor(
+                    self.app["executor"], self.app["thermal"].read_frame
+                )
             except Exception as e:
                 logger.error(f"Thermal frame read failed: {e}")
                 await asyncio.sleep(0.5)
@@ -197,6 +202,30 @@ class AnalyticsService:
                         pass
             if send_tasks:
                 await asyncio.gather(*send_tasks, return_exceptions=True)
+
+            # Send thermal temperature update every 10 frames (~1s at 10fps)
+            frame_counter += 1
+            if frame_counter >= 10:
+                frame_counter = 0
+                try:
+                    avg_temp = self.app["thermal"].get_avg_temperature()
+                    source = self.app["thermal"].source
+                    thermal_payload = json.dumps({
+                        "type": "thermal_update",
+                        "data": {
+                            "avg_temp": round(avg_temp, 2),
+                            "source": source,
+                        },
+                    })
+                    # Send to all clients (not just thermal subscribers)
+                    for ws in list(self.app["clients"]):
+                        if not ws.closed:
+                            try:
+                                await ws.send_str(thermal_payload)
+                            except Exception:
+                                pass
+                except Exception as e:
+                    logger.warning(f"Thermal update send failed: {e}")
 
             await asyncio.sleep(
                 max(0, config.THERMAL_FRAME_DELAY - (time.monotonic() - start))

@@ -9,11 +9,13 @@ async def get_status(request):
     normal_source = app.get("normal_source")
     static_source = app.get("static_source")
 
+    thermal = app.get("thermal")
     status = {
         "yolo_loaded": detector is not None and detector.model is not None,
         "disease_models_loaded": len(models.disease_models) if models else 0,
         "normal_camera_open": normal_source.is_open() if normal_source else False,
         "static_source_open": static_source.is_open() if static_source else False,
+        "thermal_source": thermal.source if thermal else "unknown",
         "active_clients": len(app.get("clients", set())),
         "active_streams": list(app.get("active_streams", set())),
         "lethargy_demo_active": app.get("lethargy_demo_active", False),
